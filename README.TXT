@@ -1,4 +1,4 @@
-Django Project für stefankauerauf.de
+Django Project für einen Photobezogenen Blog
 
 zum testen kann man virtualenv benutzen.
 unter arch linux geht das wie folgt:
