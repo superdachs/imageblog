@@ -30,7 +30,10 @@ class GalImage(models.Model):
     pub_date = models.DateTimeField('date published')
     make_date = models.DateTimeField('date taken')
     base_file = models.ImageField(upload_to=settings.MEDIA_ROOT + '/gallery_images')
-    
+
+    def __unicode__(self):
+        return self.title
+
     def save(self):
         if not self.id and not self.base_file:
             return

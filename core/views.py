@@ -14,10 +14,8 @@ def site(request, site_id):
     site = get_object_or_404(Site, pk=site_id)
     articles = Article.objects.filter(site = site_id).order_by('-pub_date')
     galleries = Gallery.objects.filter(site = site_id).order_by('-pub_date')
-    basepath = os.path.dirname( __file__) + '/..'
     context = {'site': site,
         'articles': articles,
-        'galleries': galleries,
-        'basepath': basepath}
+        'galleries': galleries,}
     return render(request, 'core/site.phtml', context)
 
