@@ -1,0 +1,9 @@
+{% if latest_site_list %}
+    <ul>
+    {% for site in latest_site_list %}
+        <li><a href="/sites/{{ site.id }}/">{{ site.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Sites are available.</p>
+{% endif %}

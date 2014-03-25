@@ -1,0 +1,28 @@
+{% extends "core/base.phtml" %}
+{% block title %}{{ site.title }}{% endblock %}
+{% block description %}{{ site.description }}{% endblock %}
+{% block content %}
+<h1>{{ site.title }}</h1>
+<h2>{{ site.subtitle }}</h2>
+<p>{{ site.description }}</p>
+<hr/>
+{% for article in articles %}
+    <p>
+        <h3>{{ article.title }}</h3>
+        <h4>{{ article.subtitle }}</h4>
+        <p>{{ article.description }}</p>
+        <p>{{ article.content|truncatewords:"100" }}</p>
+    </p>
+    <hr/>
+{% endfor %}
+{% for gallery in galleries %}
+    <p>
+        <h3>{{ gallery.title }}</h3>
+        {% for galimage in gallery.galimages.all %}
+        <h2>{{ galimage.name }}</h2>
+        <img src="{{ galimage.base_file.url }}"/>
+        <a>{{ galimage.base_file.url }}"</a>
+        {% endfor %}
+    </p>
+{% endfor %}
+{% endblock %}
