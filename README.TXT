@@ -12,5 +12,6 @@ als user:
 virtualenv2 ~/.django-virtenv-python2
 . ~/django-virtenv-python2/bin/activate
 pip install django
+pip install Pillow
 
 jetzt kann man das djangoprojekt wie gehabt nutzen (vorher natürlich das virtenv sourcen)
