@@ -13,6 +13,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+GALIMAGE_ROOT = os.path.join(MEDIA_ROOT, 'gallery_images')
+GALIMAGE_URL = '/media/galimages/'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/

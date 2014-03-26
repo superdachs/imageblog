@@ -22,7 +22,6 @@
         {% for galimage in gallery.galimages.all %}
         <h2>{{ galimage.name }}</h2>
         <img src="{{ galimage.base_file.url }}"/>
-        <a>{{ galimage.base_file.url }}"</a>
         {% endfor %}
     </p>
 {% endfor %}
