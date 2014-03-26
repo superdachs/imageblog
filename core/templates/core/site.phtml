@@ -21,7 +21,9 @@
         <h3>{{ gallery.title }}</h3>
         {% for galimage in gallery.galimages.all %}
         <h2>{{ galimage.name }}</h2>
-        <img src="{{ galimage.base_file.url }}"/>
+        <a href="{{ galimage.base_file.url }}">
+            <img src="{{ galimage.base_file.url }}.thumb.jpg"/>
+        </a>
         {% endfor %}
     </p>
 {% endfor %}
