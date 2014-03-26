@@ -40,11 +40,11 @@ class GalImage(models.Model):
 
         super(GalImage, self).save()
 
-        filename = self.base_file.name
+        filename = self.base_file.file.name
         thumb_file = Image.open(filename)
         thumb_file.thumbnail((200, 200), Image.ANTIALIAS)
         thumb_file.save(filename + ".thumb.jpg")
-        return
+
 
 class Gallery(models.Model):
     site = models.ForeignKey(Site)
