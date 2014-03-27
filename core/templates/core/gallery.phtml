@@ -14,9 +14,11 @@
 </div>
 <div class="image_info gallery_control">
     <p class="image_name">{{ image.name }}</p>
-    <p class="image_description">{{ image.description }}</p>
+    <hr/>
     <p class="image_take_date">{{ image.make_date }}</p>
     <p class="image_place">{{ image.place }}</p>
+    <hr/>
+    <p class="image_description">{{ image.description }}</p>
 </div>
 <img class="gallery_big_image" src="{{ image.base_file.url }}" alt="{{ image.name }}"/>
 

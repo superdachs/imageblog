@@ -1,6 +1,5 @@
-- Dateiupload über Admin Seite der Image Klasse
-- Template für Galerieüberblick
-- Metadatenbehandlung für hochgeladenes Bild
-- automatische Erzeugung der Thumbnails
 - Detailansicht für Artikel
-- Detailansicht für Bilder
+- zurück/vorwärts in gallerien
+- Image model um metadaten erweitern
+    - metadaten auslesen und objekt damit füllen
+    - metadaten anzeigen
