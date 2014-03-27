@@ -3,7 +3,7 @@ from django.template import RequestContext, loader
 from django.shortcuts import render, get_object_or_404
 import os.path
 
-from core.models import Site, Article, Gallery
+from core.models import Site, Article, Gallery, GalImage
 
 def index(request):
     latest_site_list = Site.objects.order_by('-pub_date')
@@ -18,4 +18,11 @@ def site(request, site_id):
         'articles': articles,
         'galleries': galleries,}
     return render(request, 'core/site.phtml', context)
+
+def gallery(request, site_id, gallery_id, image_id):
+    gallery = get_object_or_404(Gallery, pk=gallery_id)
+    image = get_object_or_404(GalImage, pk=image_id)
+    context = {'gallery': gallery,
+        'image': image,}
+    return render(request, 'core/gallery.phtml', context)
 

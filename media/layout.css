@@ -1,0 +1,78 @@
+body {
+    background: black;
+    color: white;
+    }
+
+.gallery_big_image {
+    max-width: 95%;
+    max-height: 95%;
+    display: block;
+    margin: auto;
+    }
+
+.gallery_control_left {
+    border: 1px solid gray;
+    position: absolute;
+    top: 5%;
+    left: 10%;
+    color: white;
+    background: black;
+    }
+
+.gallery_control_right {
+    border: 1px solid gray;
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    color: white;
+    background: black;
+    }
+
+.gallery_control_center {
+    border: 1px solid gray;
+    position: absolute;
+    top: 5%;
+    left: 45%;
+    right: 45%;
+    width: auto;
+    color: white;
+    background: black;
+    text-align: center;
+    }
+
+.gallery_control {
+    padding: 3em;
+    opacity: 0;
+    transition: 1s ease-in-out;
+    }
+
+.gallery_control:hover {
+    opacity: 0.5;
+    }
+
+.gallery_control a {
+    color: white;
+    text-decoration: none;
+    }
+
+.gallery_control a:hover {
+    color: orange;
+    }
+
+.image_info {
+    border: 1px solid gray;
+    position: absolute;
+    bottom: 5%;
+    right: 10%;
+    color: white;
+    background: black;
+    }
+
+.image_name {
+    font-weight: bold;
+    font-size: 1em;
+    }
+
+.image_description {
+    font-size: 0.5em;
+    }

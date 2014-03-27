@@ -26,6 +26,7 @@ class Article(models.Model):
 
 class GalImage(models.Model):
     name = models.CharField(max_length=200)
+    description = models.TextField()
     place = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
     make_date = models.DateTimeField('date taken')
