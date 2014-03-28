@@ -4,6 +4,11 @@ body {
     color: white;
     }
 
+hr {
+    border: none;
+    border-bottom: 1px solid white;
+    }
+
 .gallery_big_image {
     max-width: 95%;
     max-height: 95%;
@@ -74,7 +79,6 @@ body {
     position: absolute;
     right: 2em;
     bottom: 2em;
-    max-width: 200px;
     border: 1px solid gray;
     color: white;
     background: black;
@@ -104,10 +108,17 @@ body {
 
 .image_info_left {
     float:left;
-}
+    border-right: 1px solid white;
+    margin-right: 1em;
+    padding-right: 1em;
+    }
 .image_info_right {
     float:right;
-}
+    }
+.image_info_meta {
+    font-size: 0.6em
+    }
+
 .image_info_clear {
     clear: both;
 }
