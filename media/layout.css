@@ -1,5 +1,5 @@
 body {
-    font-family: 'Alegreya Sans', sans-serif;    
+    font-family: 'Roboto', sans-serif;
     background: black;
     color: white;
     }
@@ -8,47 +8,56 @@ body {
     max-width: 95%;
     max-height: 95%;
     display: block;
-    margin: auto;
-    }
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    position: relative;
+    border: 1px solid gray;
+   }
 
 .gallery_control_left {
-    border: 1px solid gray;
     position: absolute;
-    top: 5%;
-    left: 10%;
+    top: 2em;
+    left: 2em;
+    border: 1px solid gray;
     color: white;
+    width: 4em;
     background: black;
+    text-align: center;
     }
 
 .gallery_control_right {
-    border: 1px solid gray;
     position: absolute;
-    top: 5%;
-    right: 10%;
+    top: 2em;
+    right: 2em;
+    border: 1px solid gray;
     color: white;
+    width: 4em;
     background: black;
+    text-align: center;
     }
 
 .gallery_control_center {
-    border: 1px solid gray;
     position: absolute;
-    top: 5%;
-    left: 45%;
-    right: 45%;
-    width: auto;
+    top: 2em;
+    left: 50%;
+    margin-left: -2em;
+    border: 1px solid gray;
+    width: 4em;
     color: white;
     background: black;
     text-align: center;
     }
 
 .gallery_control {
-    padding: 2em;
-    opacity: 0.2;
+    padding: 1em;
+    opacity: 0;
     transition: .5s ease-in-out;
     }
 
 .gallery_control:hover {
-    opacity: 0.5;
+    opacity: 0.8;
     
     }
 
@@ -62,11 +71,11 @@ body {
     }
 
 .image_info {
+    position: absolute;
+    right: 2em;
+    bottom: 2em;
     max-width: 200px;
     border: 1px solid gray;
-    position: absolute;
-    bottom: 5%;
-    right: 10%;
     color: white;
     background: black;
     }
@@ -78,17 +87,27 @@ body {
     }
 
 .image_description {
-    font-size: 0.7em;
+    font-size: 0.6em;
     text-align: justify;
     }
 .image_take_date {
     text-align: center;
-    font-size: 0.8em;
+    font-size: 0.7em;
     font-weight: bold;
     }
 
 .image_place {
     text-align: center;
-    font-size: 0.8em;
+    font-size: 0.7em;
     font-weight: bold;
     }
+
+.image_info_left {
+    float:left;
+}
+.image_info_right {
+    float:right;
+}
+.image_info_clear {
+    clear: both;
+}

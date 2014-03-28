@@ -3,6 +3,7 @@
 {% block title %}{{ gallery.title }}{% endblock %}
 {% block description %}{{ gallery.description }}{% endblock %}
 {% block content %}
+<img class="gallery_big_image" src="{{ image.base_file.url }}" alt="{{ image.name }}">
 <div class="gallery_control_left gallery_control">
     <a class="last_image_control" href="">last</a>
 </div>
@@ -10,16 +11,32 @@
     <a class="next_image_control" href="">next</a>
 </div>
 <div class="gallery_control_center gallery_control">
-    <a class="back_to_site_control" href="../../">back to site</a>
+    <a class="back_to_site_control" href="../../">exit</a>
 </div>
 <div class="image_info gallery_control">
+    <div class="image_info_left">
     <p class="image_name">{{ image.name }}</p>
     <hr/>
     <p class="image_take_date">{{ image.make_date }}</p>
     <p class="image_place">{{ image.place }}</p>
     <hr/>
     <p class="image_description">{{ image.description }}</p>
+    </div>
+    <div class="image_info_right">
+    <p class="image_info_meta">Meta: blabla</p>
+    <p class="image_info_meta">Meta: blabla</p>
+    <p class="image_info_meta">Meta: blabla</p>
+    <p class="image_info_meta">Meta: blabla</p>
+    <p class="image_info_meta">Meta: blabla</p>
+    <p class="image_info_meta">Meta: blabla</p>
+    <p class="image_info_meta">Meta: blabla</p>
+    <p class="image_info_meta">Meta: blabla</p>
+    <p class="image_info_meta">Meta: blabla</p>
+    <p class="image_info_meta">Meta: blabla</p>
+    <p class="image_info_meta">Meta: blabla</p>
+    <p class="image_info_meta copyright">Meta: blabla</p>
+    </div>
+    <div class=".image_info_clear"/>
 </div>
-<img class="gallery_big_image" src="{{ image.base_file.url }}" alt="{{ image.name }}"/>
-
+</img>
 {% endblock %}
