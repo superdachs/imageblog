@@ -17,17 +17,20 @@
     <div class="image_info_left">
     <p class="image_name">{{ image.name }}</p>
     <hr/>
-    <p class="image_take_date">{{ image.make_date }}</p>
+    <p class="image_take_date">{{ taketime }}</p>
     <p class="image_place">{{ image.place }}</p>
     <hr/>
     <p class="image_description">{{ image.description }}</p>
     </div>
     <div class="image_info_right">
 
-    {% for key, value in exif.items %}
-        <p class="image_info_meta">{{ key }}: {{ value }}</p>
-    {% endfor %}
-    
+    <p class="image_info_meta">Fotograf: {{ artist }}</p>
+    <p class="image_info_meta">Lizenz: {{ copyright }}</p>
+    <p class="image_info_meta">ISO: {{ iso }}</p>
+    <p class="image_info_meta">Belichtungszeit: {{ exposure_time }}s</p>
+    <p class="image_info_meta">Brennweite: {{ focal_length }}mm</p>
+    <p class="image_info_meta">Brennweite Kleinbild: {{ fl35 }}mm</p>
+    <p class="image_info_meta">Kamera: {{ make }} - {{ model }}</p>
     </div>
     <div class=".image_info_clear"/>
 </div>
