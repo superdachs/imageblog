@@ -23,18 +23,11 @@
     <p class="image_description">{{ image.description }}</p>
     </div>
     <div class="image_info_right">
-    <p class="image_info_meta">Meta: blabla</p>
-    <p class="image_info_meta">Meta: blabla</p>
-    <p class="image_info_meta">Meta: blabla</p>
-    <p class="image_info_meta">Meta: blabla</p>
-    <p class="image_info_meta">Meta: blabla</p>
-    <p class="image_info_meta">Meta: blabla</p>
-    <p class="image_info_meta">Meta: blabla</p>
-    <p class="image_info_meta">Meta: blabla</p>
-    <p class="image_info_meta">Meta: blabla</p>
-    <p class="image_info_meta">Meta: blabla</p>
-    <p class="image_info_meta">Meta: blabla</p>
-    <p class="image_info_meta copyright">Meta: blabla</p>
+
+    {% for key, value in exif.items %}
+        <p class="image_info_meta">{{ key }}: {{ value }}</p>
+    {% endfor %}
+    
     </div>
     <div class=".image_info_clear"/>
 </div>

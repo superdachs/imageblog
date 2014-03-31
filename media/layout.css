@@ -107,12 +107,14 @@ hr {
     }
 
 .image_info_left {
+    max-width: 20em;
     float:left;
     border-right: 1px solid white;
     margin-right: 1em;
     padding-right: 1em;
     }
 .image_info_right {
+    max-width: 15em;
     float:right;
     }
 .image_info_meta {
