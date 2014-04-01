@@ -3,3 +3,6 @@
 - Image model um metadaten erweitern
     - metadaten auslesen und objekt damit füllen
     - metadaten anzeigen
+
+
+https://developers.google.com/maps/documentation/geocoding/?csw=1#ReverseGeocoding
