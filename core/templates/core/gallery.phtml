@@ -26,9 +26,6 @@
     <p class="image_info_meta">Kamera:
                 {% if exif.Make %}{{ exif.Make }}{% endif %} 
                 {% if exif.Model %} {{ exif.Model }}{% endif %}</p>
-    {% if exif.Artist %}
-    <p class="image_info_meta">Fotograf: {{ exif.Artist }}</p>
-    {% endif %}
     {% if exif.FocalLengthH %}
     <p class="image_info_meta">Brennweite: {{ exif.FocalLengthH }}mm</p>
     {% endif %}
@@ -38,11 +35,19 @@
     {% if exif.ExposureTimeH %}
     <p class="image_info_meta">Belichtungszeit: {{ exif.ExposureTimeH }}s</p>
     {% endif %}
+    {% if exif.FNumberH %}
+    <p class="image_info_meta">Blende: {{ exif.FNumberH }}</p>
+    {% endif %}
     {% if exif.ISOSpeedRatings %}
     <p class="image_info_meta">ISO: {{ exif.ISOSpeedRatings }}</p>
     {% endif %}
+    {% if exif.Copyright or exif.Artist %}
+    <hr/>
+    {% endif %}
+    {% if exif.Artist %}
+    <p class="image_info_meta">Fotograf: {{ exif.Artist }}</p>
+    {% endif %}
     {% if exif.Copyright %}
-    <hr>
     <p class="image_info_meta copyright">Copyright: {{ exif.Copyright }}</p>
     {% endif %}
     </div>

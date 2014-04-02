@@ -32,8 +32,14 @@ def gallery(request, site_id, gallery_id, image_id):
     inf = i._getexif()
     for tag, value in inf.items():
         decoded = TAGS.get(tag, tag)
+
+#links ersetzen
+        print(str(decoded) + " " + str(value))
         exifdata[decoded] = value
-    
+    try:
+        exifdata['FNumberH'] = exifdata['FNumber'][0] / exifdata['FNumber'][1]
+    except Exception:
+        pass
     try:
         exifdata['ExposureTimeH'] = exifdata['ExposureTime'][0] / exifdata['ExposureTime'][1]
     except Exception:
