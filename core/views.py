@@ -39,7 +39,7 @@ def gallery(request, site_id, gallery_id, image_id):
     for tag, value in inf.items():
         decoded = TAGS.get(tag, tag)
         try:
-            urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', value)
+            urls = re.findall('http[s]?://[0-9a-z./&%$?-]*', value)
             for url in urls:
                 print(url)
                 value = value.replace(url, '<a href="' + url + '">' + url + '</a>')
