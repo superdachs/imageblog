@@ -48,7 +48,7 @@
     <p class="image_info_meta">Fotograf: {{ exif.Artist }}</p>
     {% endif %}
     {% if exif.Copyright %}
-    <p class="image_info_meta copyright">Copyright: {{ exif.Copyright }}</p>
+    <p class="image_info_meta copyright">Copyright: {{ exif.Copyright|safe }}</p>
     {% endif %}
     </div>
     <div class="image_info_clear"/>

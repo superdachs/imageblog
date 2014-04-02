@@ -41,10 +41,12 @@ def gallery(request, site_id, gallery_id, image_id):
         try:
             urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', value)
             for url in urls:
-                value.replace(url, '<a href="' + url + '">' + url + '</a>')
+                print(url)
+                value = value.replace(url, '<a href="' + url + '">' + url + '</a>')
         except TypeError:
             pass
-        exifdata[decoded] = value
+        if not value == "":
+            exifdata[decoded] = value
     try:
         exifdata['FNumberH'] = exifdata['FNumber'][0] / exifdata['FNumber'][1]
     except Exception:
