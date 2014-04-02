@@ -4,8 +4,15 @@ from django.shortcuts import render, get_object_or_404
 import os.path
 from PIL import Image
 from PIL.ExifTags import TAGS
+import re
 
 from core.models import Site, Article, Gallery, GalImage
+
+def url2link(value):
+    urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', value)
+    for url in urls:
+        value.replace(url, '<a href="' + url + '">' + url + '</a>')
+    return value
 
 def index(request):
     latest_site_list = Site.objects.order_by('-pub_date')
@@ -23,7 +30,6 @@ def site(request, site_id):
     return render(request, 'core/site.phtml', context)
 
 def gallery(request, site_id, gallery_id, image_id):
-    # TODO: Objektivdaten rauskriegen (Namen, Typ, Hersteller und son Käse
     gallery = get_object_or_404(Gallery, pk=gallery_id)
     image = get_object_or_404(GalImage, pk=image_id)
 
@@ -32,9 +38,12 @@ def gallery(request, site_id, gallery_id, image_id):
     inf = i._getexif()
     for tag, value in inf.items():
         decoded = TAGS.get(tag, tag)
-
-#links ersetzen
-        print(str(decoded) + " " + str(value))
+        try:
+            urls = re.findall('http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', value)
+            for url in urls:
+                value.replace(url, '<a href="' + url + '">' + url + '</a>')
+        except TypeError:
+            pass
         exifdata[decoded] = value
     try:
         exifdata['FNumberH'] = exifdata['FNumber'][0] / exifdata['FNumber'][1]
@@ -54,4 +63,6 @@ def gallery(request, site_id, gallery_id, image_id):
         'exif': exifdata,
         }
     return render(request, 'core/gallery.phtml', context)
+
+
 
