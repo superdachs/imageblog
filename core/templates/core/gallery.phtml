@@ -17,22 +17,36 @@
     <div class="image_info_left">
     <p class="image_name">{{ image.name }}</p>
     <hr/>
-    <p class="image_take_date">{{ taketime }}</p>
+    <p class="image_take_date">{{ exif.DateTimeOriginal }}</p>
     <p class="image_place">{{ image.place }}</p>
     <hr/>
     <p class="image_description">{{ image.description }}</p>
     </div>
     <div class="image_info_right">
-
-    <p class="image_info_meta">Fotograf: {{ artist }}</p>
-    <p class="image_info_meta">Lizenz: {{ copyright }}</p>
-    <p class="image_info_meta">ISO: {{ iso }}</p>
-    <p class="image_info_meta">Belichtungszeit: {{ exposure_time }}s</p>
-    <p class="image_info_meta">Brennweite: {{ focal_length }}mm</p>
-    <p class="image_info_meta">Brennweite Kleinbild: {{ fl35 }}mm</p>
-    <p class="image_info_meta">Kamera: {{ make }} - {{ model }}</p>
+    <p class="image_info_meta">Kamera:
+                {% if exif.Make %}{{ exif.Make }}{% endif %} 
+                {% if exif.Model %} {{ exif.Model }}{% endif %}</p>
+    {% if exif.Artist %}
+    <p class="image_info_meta">Fotograf: {{ exif.Artist }}</p>
+    {% endif %}
+    {% if exif.FocalLengthH %}
+    <p class="image_info_meta">Brennweite: {{ exif.FocalLengthH }}mm</p>
+    {% endif %}
+    {% if exif.FocalLengthIn35mmFilm %}
+    <p class="image_info_meta">Brennweite (Kleinbildäquivalent): {{ exif.FocalLengthIn35mmFilm }}mm</p>
+    {% endif %}
+    {% if exif.ExposureTimeH %}
+    <p class="image_info_meta">Belichtungszeit: {{ exif.ExposureTimeH }}s</p>
+    {% endif %}
+    {% if exif.ISOSpeedRatings %}
+    <p class="image_info_meta">ISO: {{ exif.ISOSpeedRatings }}</p>
+    {% endif %}
+    {% if exif.Copyright %}
+    <hr>
+    <p class="image_info_meta copyright">Copyright: {{ exif.Copyright }}</p>
+    {% endif %}
     </div>
-    <div class=".image_info_clear"/>
+    <div class="image_info_clear"/>
 </div>
 </img>
 {% endblock %}
