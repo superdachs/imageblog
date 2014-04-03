@@ -26,6 +26,9 @@
     <p class="image_info_meta">Kamera:
                 {% if exif.Make %}{{ exif.Make }}{% endif %} 
                 {% if exif.Model %} {{ exif.Model }}{% endif %}</p>
+    {% if exif.LensIDNumber %}
+    <p class="image_info_meta">Objektiv: {{ exif.LensIDNumber }}</p>
+    {% endif %}
     {% if exif.FocalLengthH %}
     <p class="image_info_meta">Brennweite: {{ exif.FocalLengthH }}mm</p>
     {% endif %}

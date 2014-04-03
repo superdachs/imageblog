@@ -5,6 +5,7 @@ import os.path
 from PIL import Image
 from PIL.ExifTags import TAGS
 import re
+import exifread
 
 from core.models import Site, Article, Gallery, GalImage
 
@@ -36,6 +37,18 @@ def gallery(request, site_id, gallery_id, image_id):
     exifdata = {}
     i = Image.open(image.base_file.file.name)
     inf = i._getexif()
+
+    print('huhu')
+
+    f = open(image.base_file.file.name, 'rb')
+    tags = exifread.process_file(f)
+    f.close()
+    print(tags)
+
+    for tag in tags.keys():
+        print(tag + tags[tag])
+
+
     for tag, value in inf.items():
         decoded = TAGS.get(tag, tag)
         try:
@@ -47,6 +60,7 @@ def gallery(request, site_id, gallery_id, image_id):
             pass
         if not value == "":
             exifdata[decoded] = value
+
     try:
         exifdata['FNumberH'] = exifdata['FNumber'][0] / exifdata['FNumber'][1]
     except Exception:
