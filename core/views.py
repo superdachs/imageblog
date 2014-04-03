@@ -37,13 +37,16 @@ def gallery(request, site_id, gallery_id, image_id):
     #############################################################
     # neue metadaten behandlung                                 #
     #############################################################
-    #f = open(image.base_file.file.name, 'rb')                  #
-    #exifd = exifread.process_file(f)                           #
-    #f.close()                                                  #
-    #for tag in exifd.keys():                                   #
-    #    print("TAG: " + str(tag) + " - VAL:" + str(exifd[tag]))#
-    #print("------------------------")                          # 
-    #print(exifd['EXIF FocalLength'])                           #
+    f = open(image.base_file.file.name, 'rb')
+    exifd = exifread.process_file(f)
+    f.close()
+    for tag in exifd:
+        print(str(tag) + ":" + str(exifd[tag]))
+    
+    
+    ld = exifd['MakerNote LensData']
+    print(ld) 
+    
     #############################################################
 
 
