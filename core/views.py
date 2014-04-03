@@ -34,21 +34,24 @@ def gallery(request, site_id, gallery_id, image_id):
     gallery = get_object_or_404(Gallery, pk=gallery_id)
     image = get_object_or_404(GalImage, pk=image_id)
 
+    #############################################################
+    # neue metadaten behandlung                                 #
+    #############################################################
+    #f = open(image.base_file.file.name, 'rb')                  #
+    #exifd = exifread.process_file(f)                           #
+    #f.close()                                                  #
+    #for tag in exifd.keys():                                   #
+    #    print("TAG: " + str(tag) + " - VAL:" + str(exifd[tag]))#
+    #print("------------------------")                          # 
+    #print(exifd['EXIF FocalLength'])                           #
+    #############################################################
+
+
+
     exifdata = {}
     i = Image.open(image.base_file.file.name)
     inf = i._getexif()
-
-    print('huhu')
-
-    f = open(image.base_file.file.name, 'rb')
-    tags = exifread.process_file(f)
-    f.close()
-    print(tags)
-
-    for tag in tags.keys():
-        print(tag + tags[tag])
-
-
+    
     for tag, value in inf.items():
         decoded = TAGS.get(tag, tag)
         try:
