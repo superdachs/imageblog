@@ -2,6 +2,8 @@ from django.http import HttpResponse
 from django.template import RequestContext, loader
 from django.shortcuts import render, get_object_or_404
 import os.path
+import os
+import subprocess
 from PIL import Image
 from PIL.ExifTags import TAGS
 import re
@@ -37,49 +39,25 @@ def gallery(request, site_id, gallery_id, image_id):
     #############################################################
     # neue metadaten behandlung                                 #
     #############################################################
-    f = open(image.base_file.file.name, 'rb')
-    exifd = exifread.process_file(f)
-    f.close()
-    for tag in exifd:
-        print(str(tag) + ":" + str(exifd[tag]))
-    
-    
-    ld = exifd['MakerNote LensData']
-    print(ld) 
-    
-    #############################################################
-
-
-
+    cmdline = "exiv2 -pab " + image.base_file.file.name
+    p = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     exifdata = {}
-    i = Image.open(image.base_file.file.name)
-    inf = i._getexif()
-    
-    for tag, value in inf.items():
-        decoded = TAGS.get(tag, tag)
+    for line in iter(p.stdout.readline, b''):
+        l = re.sub('\s+', ' ', line).strip()
         try:
-            urls = re.findall('http[s]?://[0-9a-z./&%$?-]*', value)
-            for url in urls:
-                print(url)
-                value = value.replace(url, '<a href="' + url + '">' + url + '</a>')
-        except TypeError:
+            key = re.sub('\.', '_', l.split( )[0])
+            value = l.split(' ', 3 )[3]
+            if not value == '(Binary value suppressed)':
+                exifdata[key] = value
+        except Exception:
             pass
-        if not value == "":
-            exifdata[decoded] = value
+    p.wait()
 
-    try:
-        exifdata['FNumberH'] = exifdata['FNumber'][0] / exifdata['FNumber'][1]
-    except Exception:
-        pass
-    try:
-        exifdata['ExposureTimeH'] = exifdata['ExposureTime'][0] / exifdata['ExposureTime'][1]
-    except Exception:
-        pass
-    try:    
-        exifdata['FocalLengthH'] = exifdata['FocalLength'][0] / exifdata['FocalLength'][1]
-    except Exception:
-        pass
-    
+    for d in exifdata:
+        print(d + ' - ' + exifdata[d])
+
+    #############################################################
+   
     context = {'gallery': gallery,
         'image': image,
         'exif': exifdata,
