@@ -52,7 +52,14 @@ def gallery(request, site_id, gallery_id, image_id):
             print(l)
             key = re.sub('\.', '_', l.split( )[0])
             value = l.split(' ', 3 )[3]
+
             if not value == '(Binary value suppressed)':
+                try:
+                    urls = re.findall('http[s]?://[0-9a-z./&%$?-]*', value)
+                    for url in urls:
+                        value = value.replace(url, '<a href="' + url + '">' + url + '</a>')
+                except TypeError:
+                    pass
                 exifdata[key] = value
         except Exception:
             pass

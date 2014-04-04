@@ -17,17 +17,49 @@
     <div class="image_info_left">
     <p class="image_name">{{ image.name }}</p>
     <hr/>
-    <p class="image_take_date">{{ exif.DateTimeOriginal }}</p>
+    <p class="image_take_date">{{ exif.Exif_Photo_DateTimeOriginal }}</p>
     <p class="image_place">{{ image.place }}</p>
     <hr/>
     <p class="image_description">{{ image.description }}</p>
     </div>
     <div class="image_info_right">
+    
+
     <p class="image_info_meta">Kamera:
                 {% if exif.Exif_Image_Make %}{{ exif.Exif_Image_Make }}{% endif %} 
                 {% if exif.Exif_Image_Model %}  - {{ exif.Exif_Image_Model }}{% endif %}</p>
     {% if exif.Exif_NikonLd3_LensIDNumber %}
     <p class="image_info_meta">Objektiv: {{ exif.Exif_NikonLd3_LensIDNumber }}</p>
+    {% endif %}
+    {% if exif.Exif_Photo_Flash %}
+    <p class="image_info_meta">Blitz: {{ exif.Exif_Photo_Flash }}</p>
+    {% endif %}
+    {% if exif.Exif_Nikon3_Focus %}
+    <p class="image_info_meta">Fokusmodus: {{ exif.Exif_Nikon3_Focus }}</p>
+    {% endif %}
+    {% if exif.Exif_NikonLd3_FocusDistance %}
+    <p class="image_info_meta">Fokusentfernung: {{ exif.Exif_NikonLd3_FocusDistance }}</p>
+    {% endif %}
+    {% if exif.Exif_NikonLd3_FocalLength %}
+    <p class="image_info_meta">Brennweite: {{ exif.Exif_NikonLd3_FocalLength }}</p>
+    {% endif %}
+    {% if exif.Exif_Photo_FocalLengthIn35mmFilm %}
+    <p class="image_info_meta">Brennweite (Kleinbildäquivalent): {{ exif.Exif_Photo_FocalLengthIn35mmFilm }}</p>
+    {% endif %}
+    {% if exif.Exif_Photo_FNumber %}
+    <p class="image_info_meta">Blende: {{ exif.Exif_Photo_FNumber }}</p>
+    {% endif %}
+    {% if exif.Exif_Photo_ExposureTime %}
+    <p class="image_info_meta">Belichtungszeit: {{ exif.Exif_Photo_ExposureTime }}</p>
+    {% endif %}
+    {% if exif.Exif_Photo_ISOSpeedRatings %}
+    <p class="image_info_meta">ISO: {{ exif.Exif_Photo_ISOSpeedRatings }}</p>
+    {% endif %}
+    {% if exif.Exif_Image_Copyright %}
+    <p class="image_info_meta">Copyright: {{ exif.Exif_Image_Copyright|safe }}</p>
+    {% endif %}
+    {% if exif.Exif_Image_Artist %}
+    <p class="image_info_meta">Fotograf: {{ exif.Exif_Image_Artist }}</p>
     {% endif %}
     </div>
     <div class="image_info_clear"/>
