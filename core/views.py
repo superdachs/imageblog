@@ -5,9 +5,7 @@ import os.path
 import os
 import subprocess
 from PIL import Image
-from PIL.ExifTags import TAGS
 import re
-import exifread
 
 from core.models import Site, Article, Gallery, GalImage
 
@@ -43,8 +41,15 @@ def gallery(request, site_id, gallery_id, image_id):
     p = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     exifdata = {}
     for line in iter(p.stdout.readline, b''):
-        l = re.sub('\s+', ' ', line).strip()
+        print(str(line))
         try:
+            print("1")
+            l = re.sub('b\'', '', str(line))
+            l = re.sub('\'', '', l)
+            l = l.replace("\\n", " ")
+            l = re.sub('\s+', ' ', l).strip()
+            print("2")
+            print(l)
             key = re.sub('\.', '_', l.split( )[0])
             value = l.split(' ', 3 )[3]
             if not value == '(Binary value suppressed)':
