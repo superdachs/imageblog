@@ -33,6 +33,25 @@ def site(request, site_id):
 def gallery(request, site_id, gallery_id, image_id):
     gallery = get_object_or_404(Gallery, pk=gallery_id)
     image = get_object_or_404(GalImage, pk=image_id)
+    lastid = ''
+    nextid = ''
+    # next image
+    count = 0
+    for i in gallery.galimages.all():
+        currentid = i.id
+        if i == image:
+            break
+        count = count + 1
+    try:    
+        lastid = (gallery.galimages.all()[count-1].id)
+    except Exception:
+        lastid = 'none'
+    try:
+        nextid = (gallery.galimages.all()[count+1].id)
+    except Exception:
+        nextid == 'none'
+    if nextid == '':
+        nextid = 'none'
 
     #############################################################
     # neue metadaten behandlung                                 #
@@ -41,15 +60,11 @@ def gallery(request, site_id, gallery_id, image_id):
     p = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     exifdata = {}
     for line in iter(p.stdout.readline, b''):
-        print(str(line))
         try:
-            print("1")
             l = re.sub('b\'', '', str(line))
             l = re.sub('\'', '', l)
             l = l.replace("\\n", " ")
             l = re.sub('\s+', ' ', l).strip()
-            print("2")
-            print(l)
             key = re.sub('\.', '_', l.split( )[0])
             value = l.split(' ', 3 )[3]
 
@@ -64,15 +79,13 @@ def gallery(request, site_id, gallery_id, image_id):
         except Exception:
             pass
     p.wait()
-
-    for d in exifdata:
-        print(d + ' - ' + exifdata[d])
-
     #############################################################
    
     context = {'gallery': gallery,
         'image': image,
         'exif': exifdata,
+        'last' : lastid,
+        'next' : nextid,
         }
     return render(request, 'core/gallery.phtml', context)
 
