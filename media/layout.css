@@ -118,9 +118,21 @@ hr {
     float:right;
     }
 .image_info_meta {
-    font-size: 0.6em
+    font-size: 0.6em;
     }
 
 .image_info_clear {
     clear: both;
 }
+.gallery_overview {
+    border: 1px solid gray;
+    text-align: center;
+    width: 60%;
+    }
+.preview_link {
+    position: relative;
+    }
+.preview_image {
+    display: inline;
+    border: 1px solid gray;
+    }

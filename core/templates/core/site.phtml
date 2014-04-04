@@ -17,14 +17,19 @@
     <hr/>
 {% endfor %}
 {% for gallery in galleries %}
-    <p>
+
+
+    <div class="gallery_overview">
         <h3>{{ gallery.title }}</h3>
         {% for galimage in gallery.galimages.all %}
-        <h2>{{ galimage.name }}</h2>
-        <a href="./{{ gallery.id }}/{{ galimage.id }}/">
-            <img style="float: left;" src="{{ galimage.base_file.url }}.thumb.jpg"/>
+        
+        <a class="preview_link" href="./{{ gallery.id }}/{{ galimage.id }}/">
+            <img class="preview_image" style="float: left;" src="{{ galimage.base_file.url }}.thumb.jpg"/>
         </a>
+        <p class="image_name">{{ galimage.name }}</p>
+        
         {% endfor %}
-    </p>
+    </div>
+
 {% endfor %}
 {% endblock %}
