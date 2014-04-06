@@ -30,7 +30,10 @@ def site(request, site_id):
         }
     return render(request, 'core/site.phtml', context)
 
-def galleryOverview(request, gallery_id):
+def article(request, article_id:
+    return render(request, 'core/article.phtml')
+
+def gallery_overview(request, gallery_id):
     return render(request, 'core/gallery_overview.phtml', context)
 
 def gallery(request, site_id, gallery_id, image_id):
