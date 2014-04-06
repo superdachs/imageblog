@@ -90,8 +90,8 @@ def gallery(request, site_id, gallery_id, image_id):
         longitudeString = exifdata['Exif_GPSInfo_GPSLongitude']
         latitudeRefString = exifdata['Exif_GPSInfo_GPSLatitudeRef']
         longitudeRefString = exifdata['Exif_GPSInfo_GPSLongitudeRef']
-        latitudeString = latitudeString.replace('deg ', '°')
-        longitudeString = longitudeString.replace('deg ', '°')
+        latitudeString = latitudeString.replace('deg ', ' ')
+        longitudeString = longitudeString.replace('deg ', ' ')
 
     if exifdata['Exif_GPSInfo_GPSAltitude']:
         altitudeString = exifdata['Exif_GPSInfo_GPSAltitude']
