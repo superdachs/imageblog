@@ -26,6 +26,8 @@
     {% if not latstr == "" %}
     <p class="image_place">Latitude: {{ latstr }} {{ latref }}</p>
     <p class="image_place">Longitude: {{ lonstr }} {{ lonref }}</p>
+    <img src="http://maps.google.com/maps/api/staticmap?center=45.4736,5.973&zoom=14&size=256x256&maptype=roadmap&markers=color:blue|label:S|45.4736,5.973&sensor=false"></img> 
+    
     {% endif %}
     {% if altstr %}
     <p class="image_place">Höhe: {{ altstr }}</p>
