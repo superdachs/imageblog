@@ -1,0 +1,7 @@
+{% extends "core/base.phtml" %}
+{% load staticfiles %}
+{% block title %}{{ article.title }}{% endblock %}
+{% block description %}{{ article.description }}{% endblock %}
+{% block content %}
+<h1>{{ article.title }}</h1>
+{% endblock %}
