@@ -23,7 +23,7 @@
     <hr/>
     <p class="image_take_date">{{ exif.Exif_Photo_DateTimeOriginal }}</p>
     <p class="image_place">{{ image.place }}</p>
-    {% if latstr %}
+    {% if not latstr == "" %}
     <p class="image_place">Latitude: {{ latstr }} {{ latref }}</p>
     <p class="image_place">Longitude: {{ lonstr }} {{ lonref }}</p>
     {% endif %}

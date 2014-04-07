@@ -88,16 +88,26 @@ def gallery(request, site_id, gallery_id, image_id):
     #############################################################
        
     # GPS Handling
-    if exifdata['Exif_GPSInfo_GPSLatitude']:
-        latitudeString = exifdata['Exif_GPSInfo_GPSLatitude']
-        longitudeString = exifdata['Exif_GPSInfo_GPSLongitude']
-        latitudeRefString = exifdata['Exif_GPSInfo_GPSLatitudeRef']
-        longitudeRefString = exifdata['Exif_GPSInfo_GPSLongitudeRef']
-        latitudeString = latitudeString.replace('deg ', ' ')
-        longitudeString = longitudeString.replace('deg ', ' ')
-
-    if exifdata['Exif_GPSInfo_GPSAltitude']:
-        altitudeString = exifdata['Exif_GPSInfo_GPSAltitude']
+    try:
+        if exifdata['Exif_GPSInfo_GPSLatitude']:
+            latitudeString = exifdata['Exif_GPSInfo_GPSLatitude']
+            longitudeString = exifdata['Exif_GPSInfo_GPSLongitude']
+            latitudeRefString = exifdata['Exif_GPSInfo_GPSLatitudeRef']
+            longitudeRefString = exifdata['Exif_GPSInfo_GPSLongitudeRef']
+            latitudeString = latitudeString.replace('deg ', ' ')
+            longitudeString = longitudeString.replace('deg ', ' ')
+    except Exception:
+        latitudeString = "unknown"
+        latitudeRefString = "unknown"
+        longitudeString = "unknown"
+        longitudeRefString = "unknown"
+        pass
+    try:
+        if exifdata['Exif_GPSInfo_GPSAltitude']:
+            altitudeString = exifdata['Exif_GPSInfo_GPSAltitude']
+    except Exception:
+        altitudeString = "unknown"
+        pass
 
 # Exif.GPSInfo.GPSVersionID       Byte        4  2.3.0.0
 # Exif.GPSInfo.GPSLatitudeRef     Ascii       2  North
