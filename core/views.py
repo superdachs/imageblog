@@ -30,10 +30,20 @@ def site(request, site_id):
         }
     return render(request, 'core/site.phtml', context)
 
-def article(request, article_id):
-    return render(request, 'core/article.phtml')
+def article(request, article_id, site_id):
+    article = get_object_or_404(Article, pk=article_id)
+    site = get_object_or_404(Site, pk=site_id)
+    context = {'article': article,
+            'site': site,
+        }
+    return render(request, 'core/article.phtml', context)
 
-def gallery_overview(request, gallery_id):
+def gallery_overview(request, gallery_id, site_id):
+    gallery = get_object_or_404(Gallery, pk=gallery_id)
+    site = get_object_or_404(Site, pk=site_id)
+    context = {'gallery': gallery,
+            'site': site,
+    }
     return render(request, 'core/gallery_overview.phtml', context)
 
 def gallery(request, site_id, gallery_id, image_id):
