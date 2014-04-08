@@ -3,17 +3,16 @@
 {% block title %}{{ gallery.title }}{% endblock %}
 {% block description %}{{ gallery.description }}{% endblock %}
 {% block content %}
-<h1>{{ gallery.title }}</h1>
-<p>{{ gallery.description}}</p>
 
 {% for galimage in gallery.galimages.all %}
- 
-<a class="preview_link" href="../detail/{{ galimage.id }}/">
-<img class="preview_image" style="float: left;" src="{{ galimage.base_file.url }}.thumb.jpg"/>
+<div class="preview_image_container">
+<div style="position: relative">
+<a class="preview_image_link" href="../detail/{{ galimage.id }}/">
+<img class="preview_image" src="{{ galimage.base_file.url }}.thumb.jpg"/>
 </a>
-
+<p class="preview_image_name">{{ galimage.name }}</p>
+</div>
+</div>
 {% endfor %}
-
-
 
 {% endblock %}

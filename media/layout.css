@@ -1,3 +1,5 @@
+/* general */
+
 body {
     font-family: 'Roboto', sans-serif;
     background: black;
@@ -8,6 +10,8 @@ hr {
     border: none;
     border-bottom: 1px solid white;
     }
+
+/* gallery */
 
 .gallery_big_image {
     max-width: 95%;
@@ -124,15 +128,39 @@ hr {
 .image_info_clear {
     clear: both;
 }
-.gallery_overview {
+
+/* gallery_overview */
+
+.preview_image_container {
+    display: inline-block;
+    height: 200px;
+    width: 200px;
     border: 1px solid gray;
     text-align: center;
-    width: 60%;
-    }
-.preview_link {
-    position: relative;
-    }
+    vertical-align: middle;
+    overflow: hidden;
+    margin: 1em;
+}
+
+.preview_image_container:hover .preview_image_name {
+    opacity: 0.9;
+}
+
 .preview_image {
+    min-width: 100%;
+    min-height: 100%;
     display: inline;
+}
+
+.preview_image_name {
+    background: black;
     border: 1px solid gray;
-    }
+    font-size: 0.6em;
+    padding: 1em;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    left: 5px;
+    transition: .5s ease-in-out;
+    max-width: 180px;
+}

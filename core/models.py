@@ -43,7 +43,7 @@ class GalImage(models.Model):
 
         filename = self.base_file.file.name
         thumb_file = Image.open(filename)
-        thumb_file.thumbnail((200, 200), Image.ANTIALIAS)
+        thumb_file.thumbnail((400, 400), Image.ANTIALIAS)
         thumb_file.save(filename + ".thumb.jpg")
 
 
