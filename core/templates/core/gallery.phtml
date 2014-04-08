@@ -24,16 +24,17 @@
     <p class="image_take_date">{{ exif.Exif_Photo_DateTimeOriginal }}</p>
     <p class="image_place">{{ image.place }}</p>
     {% if not latstr == "unknown" %}
-    <p class="image_place">Latitude: {{ latstr }} {{ latref }}</p>
-    <p class="image_place">Longitude: {{ lonstr }} {{ lonref }}</p>
-
-    <img class="map" src="http://maps.google.com/maps/api/staticmap?center={{ googlelat }},{{ googlelon }}&zoom=13&size=300x200&maptype=roadmap&markers=color:blue|label:test|{{ googlelat }},{{ googlelon }}&sensor=false"></img> 
-    
-    {% endif %}
+    <p class="image_place">Länge: {{ latstr }} {% if latref == "North" %}Nord{% else %}S&uumld{% endif %}</p>
+    <p class="image_place">Breite: {{ lonstr }} {% if lonref == "East" %}Ost{% else %}West{% endif %}</p>
     {% if not altstr == "unknown" %}
     <p class="image_place">Höhe: {{ altstr }}</p>
     {% endif %}
-    <hr/>
+
+    <p class="image_place">
+    <img class="map" src="http://maps.google.com/maps/api/staticmap?center={{ googlelat }},{{ googlelon }}&zoom=14&size=300x200&maptype=roadmap&markers=color:blue|label:test|{{ googlelat }},{{ googlelon }}&sensor=false"></img> 
+    </p>
+    {% endif %}
+        <hr/>
     <p class="image_description">{{ image.description }}</p>
     </div>
     <div class="image_info_right">
