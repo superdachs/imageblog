@@ -101,6 +101,7 @@ def gallery(request, site_id, gallery_id, image_id):
     #############################################################
 
 
+
     # GPS Handling
     try:
         latitudeString = exifdata['Exif_GPSInfo_GPSLatitude']
@@ -109,11 +110,21 @@ def gallery(request, site_id, gallery_id, image_id):
         longitudeRefString = exifdata['Exif_GPSInfo_GPSLongitudeRef']
         latitudeString = latitudeString.replace('deg ', ' ')
         longitudeString = longitudeString.replace('deg ', ' ')
+        latdeg = latitudeString.split()[0]
+        lattail = latitudeString.split()[1]
+        londeg = longitudeString.split()[0]
+        lontail = longitudeString.split()[1]
+        lattail = float(lattail) / 60
+        lontail = float(lontail) / 60
+        googlelat = latdeg + "." + str(lattail).split('.')[1]
+        googlelon = londeg + "." + str(lontail).split('.')[1]
     except Exception:
         latitudeString = "unknown"
         latitudeRefString = "unknown"
         longitudeString = "unknown"
         longitudeRefString = "unknown"
+        googlelat = ''
+        googlelon = ''
         pass
     try:
         if exifdata['Exif_GPSInfo_GPSAltitude']:
@@ -122,20 +133,8 @@ def gallery(request, site_id, gallery_id, image_id):
         altitudeString = "unknown"
         pass
 
-    # make google koordinaten
 
-    latdeg = latitudeString.split()[0]
-    lattail = latitudeString.split()[1]
-    londeg = longitudeString.split()[0]
-    lontail = longitudeString.split()[1]
-
-    lattail = float(lattail) / 60
-    lontail = float(lontail) / 60
-
-    googlelat = latdeg + "." + str(lattail).split('.')[1]
-    googlelon = londeg + "." + str(lontail).split('.')[1]
-
-# Exif.GPSInfo.GPSVersionID       Byte        4  2.3.0.0
+    # Exif.GPSInfo.GPSVersionID       Byte        4  2.3.0.0
 # Exif.GPSInfo.GPSLatitudeRef     Ascii       2  North
 # Exif.GPSInfo.GPSLatitude        Rational    3  51deg 2.52500' 
 # Exif.GPSInfo.GPSLongitudeRef    Ascii       2  East
