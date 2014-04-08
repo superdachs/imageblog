@@ -72,12 +72,14 @@ def gallery(request, site_id, gallery_id, image_id):
     #############################################################
     # neue metadaten behandlung                                 #
     #############################################################
-    cmdline = "exiv2 -pab " + image.base_file.file.name
+    cmdline = "exiv2 -pa " + image.base_file.file.name
     p = subprocess.Popen(cmdline, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
     exifdata = {}
     for line in iter(p.stdout.readline, b''):
         try:
             l = re.sub('b\'', '', str(line))
+            l = re.sub('b"', '', l)
+            l = re.sub('"', '', l)
             l = re.sub('\'', '', l)
             l = l.replace("\\n", " ")
             l = re.sub('\s+', ' ', l).strip()
@@ -92,20 +94,21 @@ def gallery(request, site_id, gallery_id, image_id):
                 except TypeError:
                     pass
                 exifdata[key] = value
+                print(key + " : " + value)
         except Exception:
             pass
     p.wait()
     #############################################################
-       
+
+
     # GPS Handling
     try:
-        if exifdata['Exif_GPSInfo_GPSLatitude']:
-            latitudeString = exifdata['Exif_GPSInfo_GPSLatitude']
-            longitudeString = exifdata['Exif_GPSInfo_GPSLongitude']
-            latitudeRefString = exifdata['Exif_GPSInfo_GPSLatitudeRef']
-            longitudeRefString = exifdata['Exif_GPSInfo_GPSLongitudeRef']
-            latitudeString = latitudeString.replace('deg ', ' ')
-            longitudeString = longitudeString.replace('deg ', ' ')
+        latitudeString = exifdata['Exif_GPSInfo_GPSLatitude']
+        longitudeString = exifdata['Exif_GPSInfo_GPSLongitude']
+        latitudeRefString = exifdata['Exif_GPSInfo_GPSLatitudeRef']
+        longitudeRefString = exifdata['Exif_GPSInfo_GPSLongitudeRef']
+        latitudeString = latitudeString.replace('deg ', ' ')
+        longitudeString = longitudeString.replace('deg ', ' ')
     except Exception:
         latitudeString = "unknown"
         latitudeRefString = "unknown"
@@ -118,6 +121,19 @@ def gallery(request, site_id, gallery_id, image_id):
     except Exception:
         altitudeString = "unknown"
         pass
+
+    # make google koordinaten
+
+    latdeg = latitudeString.split()[0]
+    lattail = latitudeString.split()[1]
+    londeg = longitudeString.split()[0]
+    lontail = longitudeString.split()[1]
+
+    lattail = float(lattail) / 60
+    lontail = float(lontail) / 60
+
+    googlelat = latdeg + "." + str(lattail).split('.')[1]
+    googlelon = londeg + "." + str(lontail).split('.')[1]
 
 # Exif.GPSInfo.GPSVersionID       Byte        4  2.3.0.0
 # Exif.GPSInfo.GPSLatitudeRef     Ascii       2  North
@@ -141,6 +157,8 @@ def gallery(request, site_id, gallery_id, image_id):
         'latref'  : latitudeRefString,
         'lonref'  : longitudeRefString,
         'altstr'  : altitudeString,
+        'googlelat' : googlelat,
+        'googlelon' : googlelon,
         }
     return render(request, 'core/gallery.phtml', context)
 
