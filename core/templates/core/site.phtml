@@ -3,33 +3,32 @@
 {% block title %}{{ site.title }}{% endblock %}
 {% block description %}{{ site.description }}{% endblock %}
 {% block content %}
-<h1>{{ site.title }}</h1>
-<h2>{{ site.subtitle }}</h2>
-<p>{{ site.description }}</p>
-<hr/>
+
+<div class="site_menu">
+{% for s in sites %}
+<a class="site_menu_link" href="../{{ s.id }}">{{ s.title }}</a>
+{% endfor %}
+</div>
+
+
+<h1 class="site_title">{{ site.title }}</h1>
+<h2 class="site_subtitle">{{ site.subtitle }}</h2>
+<p class="site_description">{{ site.description }}</p>
+
+
+<div class="site_articles">
 {% for article in articles %}
-    <p>
-        <h3>{{ article.title }}</h3>
-        <h4>{{ article.subtitle }}</h4>
-        <p>{{ article.description }}</p>
-        <p>{{ article.content|truncatewords:"100" }}</p>
-    </p>
-    <hr/>
+<h4>{{ article.title }}</h4>
+<p>{{ article.description }}</p>
+<p class="site_article_content">{{ article.content }}</p>
+<hr/>
 {% endfor %}
+</div>
+<div class="site_galleries">
 {% for gallery in galleries %}
-
-
-    <div class="gallery_overview">
-        <h3>{{ gallery.title }}</h3>
-        {% for galimage in gallery.galimages.all %}
-        
-        <a class="preview_link" href="./gallery/{{ gallery.id }}/detail/{{ galimage.id }}/">
-            <img class="preview_image" style="float: left;" src="{{ galimage.base_file.url }}.thumb.jpg"/>
-        </a>
-        <p class="image_name">{{ galimage.name }}</p>
-        
-        {% endfor %}
-    </div>
-
+<h4>{{ gallery.title }}</h4>
+<p>{{ gallery.description }}</p>
+<hr/>
 {% endfor %}
+</div>
 {% endblock %}

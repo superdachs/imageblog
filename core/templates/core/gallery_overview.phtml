@@ -3,6 +3,11 @@
 {% block title %}{{ gallery.title }}{% endblock %}
 {% block description %}{{ gallery.description }}{% endblock %}
 {% block content %}
+<div class="gallery_container">
+<div class="gallery_info">
+<h3>{{ gallery.title }}</h3>
+<p>{{ gallery.description }}</p>
+</div>
 
 {% for galimage in gallery.galimages.all %}
 <div class="preview_image_container">
@@ -14,5 +19,5 @@
 </div>
 </div>
 {% endfor %}
-
+</div>
 {% endblock %}

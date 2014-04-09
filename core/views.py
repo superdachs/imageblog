@@ -21,12 +21,14 @@ def index(request):
     return render(request, 'core/sites.phtml', context)
 
 def site(request, site_id):
+    sites = Site.objects.all()
     site = get_object_or_404(Site, pk=site_id)
     articles = Article.objects.filter(site = site_id).order_by('-pub_date')
     galleries = Gallery.objects.filter(site = site_id).order_by('-pub_date')
     context = {'site': site,
         'articles': articles,
         'galleries': galleries,
+        'sites': sites,
         }
     return render(request, 'core/site.phtml', context)
 
