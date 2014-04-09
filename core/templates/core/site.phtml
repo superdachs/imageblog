@@ -20,14 +20,23 @@
 {% for article in articles %}
 <h4>{{ article.title }}</h4>
 <p>{{ article.description }}</p>
-<p class="site_article_content">{{ article.content }}</p>
+<p class="site_article_content">{{ article.content|truncatewords:"150" }}</p>
 <hr/>
 {% endfor %}
 </div>
 <div class="site_galleries">
 {% for gallery in galleries %}
-<h4>{{ gallery.title }}</h4>
+<h4><a class="site_gallery_link" href="./gallery/{{ gallery.id }}/overview">{{ gallery.title }}</a></h4>
 <p>{{ gallery.description }}</p>
+{% for image in gallery.galimages.all %}
+<div class="site_gallery_preview">
+<img class="site_gallery_preview_image" src="{{ image.base_file.url }}.thumb.jpg"/>
+</div>
+
+
+
+
+{% endfor %}
 <hr/>
 {% endfor %}
 </div>

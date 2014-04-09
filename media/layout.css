@@ -5,6 +5,9 @@ body {
     background: black;
     color: white;
     }
+body a {
+    color: gray;
+    }
 
 hr {
     border: none;
@@ -30,7 +33,6 @@ hr {
     top: 2em;
     left: 2em;
     border: 1px solid gray;
-    color: white;
     width: 4em;
     background: black;
     text-align: center;
@@ -41,7 +43,6 @@ hr {
     top: 2em;
     right: 2em;
     border: 1px solid gray;
-    color: white;
     width: 4em;
     background: black;
     text-align: center;
@@ -54,7 +55,6 @@ hr {
     margin-left: -2em;
     border: 1px solid gray;
     width: 4em;
-    color: white;
     background: black;
     text-align: center;
     }
@@ -71,7 +71,6 @@ hr {
     }
 
 .gallery_control a {
-    color: white;
     text-decoration: none;
     }
 
@@ -199,7 +198,6 @@ hr {
 .site_menu a {
     margin-left: 1.5em;
     margin-right: 1.5em;
-    color: white;
     text-decoration: none;
     }
 
@@ -222,3 +220,38 @@ hr {
 .site_article_content {
     text-align: justify;
     font-size: 0.8em;
+    }
+
+.site_title {
+    margin-left: 10%;
+    }
+.site_subtitle {
+    margin-left: 10%;
+    }
+.site_description {
+    margin-left: 10%;
+    }
+.site_gallery_link {
+    text-decoration: none;
+}
+.site_gallery_link:hover {
+    color: orange;
+    }
+
+.site_gallery_preview {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    }
+
+.site_gallery_preview_image {
+    min-width: 100px;
+    max-height: 100px;
+    display: inline;
+    margin: 0px;
+    padding: 0px;
+    }
