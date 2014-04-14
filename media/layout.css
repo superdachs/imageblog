@@ -15,8 +15,11 @@ body {
     color: white;
     }
 body a {
-    color: gray;
+    color: orange;
     }
+body a:hover {
+    color: gray
+}
 
 hr {
     border: none;
@@ -80,11 +83,12 @@ hr {
     }
 
 .gallery_control a {
+    color: orange;
     text-decoration: none;
     }
 
 .gallery_control a:hover {
-    color: orange;
+    color: gray;
     }
 
 .image_info {
@@ -205,13 +209,14 @@ hr {
     }
 
 .site_menu a {
+    color:orange;
     margin-left: 1.5em;
     margin-right: 1.5em;
     text-decoration: none;
     }
 
 .site_menu a:hover {
-    color: orange;
+    color: gray;
     }
 
 .site_articles {
@@ -241,10 +246,11 @@ hr {
     margin-left: 10%;
     }
 .site_gallery_link {
+    color: orange;
     text-decoration: none;
 }
 .site_gallery_link:hover {
-    color: orange;
+    color: gray;
     }
 
 .site_gallery_preview {
