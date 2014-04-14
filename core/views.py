@@ -1,4 +1,5 @@
 from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.template import RequestContext, loader
 from django.shortcuts import render, get_object_or_404
 import os.path
@@ -16,7 +17,7 @@ def url2link(value):
     return value
 
 def index(request):
-    return site(request, 1)
+    return HttpResponseRedirect("/sites/1/")
 
 def site(request, site_id):
     sites = Site.objects.all()
