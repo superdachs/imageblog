@@ -26,7 +26,7 @@
 </div>
 <div class="site_galleries">
 {% for gallery in galleries %}
-<h4><a class="site_gallery_link" href="site/{{ site.id }}/gallery/{{ gallery.id }}/overview">{{ gallery.title }}</a></h4>
+<h4><a class="site_gallery_link" href="sites/{{ site.id }}/gallery/{{ gallery.id }}/overview">{{ gallery.title }}</a></h4>
 <p>{{ gallery.description }}</p>
 {% for image in gallery.galimages.all %}
 <div class="site_gallery_preview">
