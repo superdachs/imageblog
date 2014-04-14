@@ -16,9 +16,7 @@ def url2link(value):
     return value
 
 def index(request):
-    latest_site_list = Site.objects.order_by('-pub_date')
-    context = {'latest_site_list': latest_site_list}
-    return render(request, 'core/sites.phtml', context)
+    return site(request, 1)
 
 def site(request, site_id):
     sites = Site.objects.all()
