@@ -5,19 +5,19 @@
 {% block content %}
 <img class="gallery_big_image" src="{{ image.base_file.url }}" alt="{{ image.name }}">
 {% if not last == 'none' %}
-<div class="gallery_control_left gallery_control">
+<div class="gallery_control_left gallery_control fade-out">
     <a class="last_image_control" href="./../{{ last }}">last</a>
 </div>
 {% endif %}
 {% if not next == 'none' %}
-<div class="gallery_control_right gallery_control">
+<div class="gallery_control_right gallery_control fade-out">
     <a class="next_image_control" href="./../{{ next }}">next</a>
 </div>
 {% endif %}
-<div class="gallery_control_center gallery_control">
+<div class="gallery_control_center gallery_control fade-out">
     <a class="back_to_site_control" href="../../overview/">exit</a>
 </div>
-<div class="image_info gallery_control">
+<div class="image_info gallery_control fade-out">
     <div class="image_info_left">
     <p class="image_name">{{ image.name }}</p>
     <hr/>
