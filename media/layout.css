@@ -70,7 +70,7 @@ hr {
 
 .gallery_control {
     padding: 1em;
-    opacity: 0;
+    /*opacity: 0;*/
     transition: .5s ease-in-out;
     }
 
