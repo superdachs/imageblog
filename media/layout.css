@@ -2,7 +2,7 @@
 @keyframes fadeOut { from { opacity:0.9; } to { opacity:0 } }
 
 .fade-out {
-    opacity:0.9;
+    opacity:0;
     animation:fadeOut ease-out 0;
     animation-fill-mode:forwards;
     animation-duration:10s;
