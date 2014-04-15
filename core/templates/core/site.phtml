@@ -18,7 +18,7 @@
 
 <div class="site_articles">
 {% for article in articles %}
-<h4>< a class="site_article_link" href="./article/{{ article.id }}/detail>"{{ article.title }}</a></h4>
+<h4>< a class="site_article_link" href="./article/{{ article.id }}/detail">{{ article.title }}</a></h4>
 <p>{{ article.description }}</p>
 <p class="site_article_content">{{ article.content|truncatewords:"150" }}</p>
 <hr/>
