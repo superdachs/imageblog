@@ -63,7 +63,7 @@ hr {
 
 .gallery_control {
     padding: 1em;
-    /*opacity: 0;*/
+    opacity: 0;
     transition: .5s ease-in-out;
     }
 
@@ -144,6 +144,19 @@ hr {
     max-width: 80%;
     text-align: center;
     }
+.article_info {
+    margin: 2em;
+    margin-left: 4em;
+    text-align: left;
+    }
+
+.article_container {
+    margin-left: 10%;
+    margin-right: 10%;
+    max-width: 80%;
+    text-align: center;
+    }
+
 
 .preview_image_container {
     display: inline-block;
@@ -242,6 +255,14 @@ hr {
 .site_gallery_link:hover {
     color: gray;
     }
+.article_gallery_link {
+    color: orange;
+    text-decoration: none;
+}
+.article_gallery_link:hover {
+    color: gray;
+    }
+
 
 .site_gallery_preview {
     display: inline-block;
