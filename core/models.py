@@ -8,9 +8,6 @@ class Site(models.Model):
     subtitle    = models.CharField(max_length=200)
     description = models.TextField()
     pub_date    = models.DateTimeField('date published')
-    additional  = models.TextField(default='empty')    
-    blahhhh = models.TextField(default='es nervt wie die sau')
-    ichbringdichumdusau = models.TextField(default='und zwar langsam du scheiss penner')
 
     def __unicode__(self):
         return self.title
