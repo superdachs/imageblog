@@ -20,7 +20,6 @@ class Article(models.Model):
     description = models.TextField()
     pub_date = models.DateTimeField('date published')
     content = models.TextField()
-    author = models.CharField(max_length=3)
 
     def __unicode__(self):
         return self.title
@@ -32,7 +31,6 @@ class GalImage(models.Model):
     pub_date = models.DateTimeField('date published')
     make_date = models.DateTimeField('date taken')
     base_file = models.ImageField(upload_to=settings.GALIMAGE_ROOT)
-    author = models.CharField(max_length=3)
 
     def __unicode__(self):
         return self.name
@@ -56,7 +54,6 @@ class Gallery(models.Model):
     description = models.TextField()
     pub_date = models.DateTimeField('date published')
     galimages = models.ManyToManyField(GalImage)
-    author = models.CharField(max_length=3)
 
     def __unicode__(self):
         return self.title
