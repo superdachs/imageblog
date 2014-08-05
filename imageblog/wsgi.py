@@ -11,7 +11,7 @@ import os
 import sys
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "imageblog.settings")
 
-sys.path.append('/srv/http/dachsbau-alpha.de/imageblog')
+sys.path.append('/srv/http/dachsbau-alpha.de')
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
