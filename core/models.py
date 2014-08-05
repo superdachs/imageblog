@@ -8,7 +8,7 @@ class Site(models.Model):
     subtitle    = models.CharField(max_length=200)
     description = models.TextField()
     pub_date    = models.DateTimeField('date published')
-    
+    additional  = models.TextField(default='empty')    
 
     def __unicode__(self):
         return self.title
