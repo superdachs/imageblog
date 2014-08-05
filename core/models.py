@@ -9,6 +9,7 @@ class Site(models.Model):
     description = models.TextField()
     pub_date    = models.DateTimeField('date published')
     additional  = models.TextField(default='empty')    
+    blahhhh = models.TextField(default='es nervt wie die sau')
 
     def __unicode__(self):
         return self.title
