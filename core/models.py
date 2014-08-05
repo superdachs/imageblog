@@ -20,6 +20,7 @@ class Article(models.Model):
     description = models.TextField()
     pub_date = models.DateTimeField('date published')
     content = models.TextField()
+    author = models.CharField(max_length=3)
 
     def __unicode__(self):
         return self.title
