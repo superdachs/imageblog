@@ -56,6 +56,7 @@ class Gallery(models.Model):
     description = models.TextField()
     pub_date = models.DateTimeField('date published')
     galimages = models.ManyToManyField(GalImage)
+    author = models.CharField(max_length=3)
 
     def __unicode__(self):
         return self.title
