@@ -284,6 +284,10 @@ hr {
     padding: 0px;
     }
 
+.fb_iframe_widget {
+    position: absolute;
+}
+
 .fb-like {
     position: absolute;
     right: 1em;
