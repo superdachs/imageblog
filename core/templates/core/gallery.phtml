@@ -1,6 +1,6 @@
 {% extends "core/base.phtml" %}
 {% load staticfiles %}
-{% block title %}{{ gallery.title }}{% endblock %}
+{% block title %}{{ image.name }}{% endblock %}
 {% block description %}{{ gallery.description }}{% endblock %}
 {% block content %}
 <img class="gallery_big_image" src="{{ image.base_file.url }}" alt="{{ image.name }}">
