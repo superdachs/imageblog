@@ -289,3 +289,8 @@ hr {
     right: 1em;
     bottom: 1em;
 }
+
+.facebook_control_img {
+    text-align: center;
+    padding-top: 2em;
+}
