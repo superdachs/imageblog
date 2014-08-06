@@ -154,7 +154,9 @@ hr {
     margin-left: 10%;
     margin-right: 10%;
     max-width: 80%;
-    text-align: center;
+    text-align: justify;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
     }
 
 
