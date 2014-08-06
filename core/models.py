@@ -5,8 +5,8 @@ from django.conf import settings
 
 class Site(models.Model):
     title       = models.CharField(max_length=200)
-    subtitle    = models.CharField(max_length=200)
-    description = models.TextField()
+    subtitle    = models.CharField(max_length=200, blank=True)
+    description = models.TextField(blank=True)
     pub_date    = models.DateTimeField('date published')
     def __unicode__(self):
         return self.title
@@ -14,8 +14,8 @@ class Site(models.Model):
 class Article(models.Model):
     site = models.ForeignKey(Site)
     title = models.CharField(max_length=200)
-    subtitle = models.CharField(max_length=200)
-    description = models.TextField()
+    subtitle = models.CharField(max_length=200, blank=True)
+    description = models.TextField(blank=True)
     pub_date = models.DateTimeField('date published')
     content = models.TextField()
     author      = models.CharField(max_length=3, default = 'nbd')
@@ -26,7 +26,7 @@ class Article(models.Model):
 
 class GalImage(models.Model):
     name = models.CharField(max_length=200)
-    description = models.TextField()
+    description = models.TextField(blank=True)
     place = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published')
     make_date = models.DateTimeField('date taken')
@@ -50,8 +50,8 @@ class GalImage(models.Model):
 class Gallery(models.Model):
     site = models.ForeignKey(Site)
     title = models.CharField(max_length=200)
-    subtitle = models.CharField(max_length=200)
-    description = models.TextField()
+    subtitle = models.CharField(max_length=200, blank=True)
+    description = models.TextField(blank=True)
     pub_date = models.DateTimeField('date published')
     galimages = models.ManyToManyField(GalImage)
 
