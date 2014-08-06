@@ -8,6 +8,8 @@ class Site(models.Model):
     subtitle    = models.CharField(max_length=200, blank=True)
     description = models.TextField(blank=True)
     pub_date    = models.DateTimeField('date published')
+    is_likeable = models.BooleanField(default=True)
+
     def __unicode__(self):
         return self.title
 
@@ -19,7 +21,7 @@ class Article(models.Model):
     pub_date = models.DateTimeField('date published')
     content = models.TextField()
     author = models.CharField(max_length=3, default = 'nbd')
-
+    is_likeable = models.BooleanField(default=True)
 
     def __unicode__(self):
         return self.title
@@ -31,6 +33,7 @@ class GalImage(models.Model):
     pub_date = models.DateTimeField('date published')
     make_date = models.DateTimeField('date taken')
     base_file = models.ImageField(upload_to=settings.GALIMAGE_ROOT)
+    is_likeable = models.BooleanField(default=True)
 
     def __unicode__(self):
         return self.name
@@ -54,6 +57,7 @@ class Gallery(models.Model):
     description = models.TextField(blank=True)
     pub_date = models.DateTimeField('date published')
     galimages = models.ManyToManyField(GalImage)
+    is_likeable = models.BooleanField(default=True)
 
     def __unicode__(self):
         return self.title
