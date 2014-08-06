@@ -77,7 +77,9 @@
     <p class="image_info_meta">Fotograf: {{ exif.Exif_Image_Artist }}</p>
     {% endif %}
     </div>
+{% if image.is_likeable == True %}
 <div class="fb-like" data-href="{{ request.get_full_path }}" data-layout="button_count" data-action="like" data-show-faces="true" data-share="true"></div>
+{% endif %}
     <div class="image_info_clear"/>
 </div>
 </img>
