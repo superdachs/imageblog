@@ -283,3 +283,9 @@ hr {
     margin: 0px;
     padding: 0px;
     }
+
+.fb-like {
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+}
