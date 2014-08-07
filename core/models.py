@@ -58,6 +58,7 @@ class Gallery(models.Model):
     pub_date = models.DateTimeField('date published')
     galimages = models.ManyToManyField(GalImage)
     is_likeable = models.BooleanField(default=True)
+    author = models.CharField(max_length=3, default='nbd')
 
     def __unicode__(self):
         return self.title
