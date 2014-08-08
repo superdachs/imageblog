@@ -26,7 +26,7 @@ class Article(models.Model):
     def __unicode__(self):
         return self.title
 
-class Layout(models.Model):
+class SiteLayout(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
     css_file = models.ImageField(upload_to=settings.CSS_ROOT)
