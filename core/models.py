@@ -29,7 +29,7 @@ class Article(models.Model):
 class SiteLayout(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    css_file = models.ImageField(upload_to=settings.CSS_ROOT)
+    css_file = models.FileField(upload_to=settings.CSS_ROOT)
 
     def __unicode__(self):
         return self.name
