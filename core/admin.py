@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import Site, Article, Gallery, GalImage
+from core.models import Site, Article, Gallery, GalImage, SiteLayout
 
 admin.site.register(Site)
 admin.site.register(Article)
