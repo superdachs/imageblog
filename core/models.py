@@ -2,6 +2,7 @@ from django.db import models
 from PIL import Image
 import os.path
 from django.conf import settings
+import os
 
 class Site(models.Model):
     title       = models.CharField(max_length=200)
@@ -29,7 +30,7 @@ class Article(models.Model):
 class SiteLayout(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(blank=True)
-    css_file = models.FileField(upload_to=settings.CSS_ROOT)
+    css_file = models.FileField(upload_to=settings.LAYOUT_ROOT)
 
     def __unicode__(self):
         return self.name
