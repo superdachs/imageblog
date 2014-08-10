@@ -288,7 +288,7 @@ hr {
 .facebook_control {
     position: absolute;
     right: 1em;
-    bottom: 1em;
+    top: 1em;
 }
 
 .facebook_control_img {
