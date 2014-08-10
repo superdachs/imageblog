@@ -6,6 +6,7 @@ body {
     }
 body a {
     color: orange;
+    text-decoration: none;
     }
 body a:hover {
     color: gray;
