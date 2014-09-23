@@ -1,4 +1,8 @@
 /* general */
+div {
+		border-radius: 10px;
+}
+
 body {
     font-family: 'Quicksand', sans-serif;
     background: black;
