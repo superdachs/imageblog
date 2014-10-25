@@ -1,0 +1,3 @@
+RewriteEngine on
+RewriteCond %{HTTP_POST} ^dachsbau-alpha\.de$ [NC]
+RewriteRule ^(.*)$ http://www.dachsbau-alpha.de/$1 [R=301,L]
