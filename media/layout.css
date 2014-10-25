@@ -123,7 +123,7 @@ hr {
     border-right: 1px solid white;
     margin-right: 1em;
     padding-right: 1em;
-    border-radius: none;
+    border-radius: 0px;
 		}
 .image_info_right {
     max-width: 15em;
