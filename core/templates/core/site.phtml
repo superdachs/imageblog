@@ -16,6 +16,7 @@
 <p class="site_description">{{ site.description }}</p>
 </div>
 
+
 <div class="site_articles">
 {% for article in articles %}
 <h4><a class="site_article_link" href="./article/{{ article.id }}">{{ article.title }}</a></h4>
@@ -33,10 +34,6 @@
 <div class="site_gallery_preview">
 <img class="site_gallery_preview_image" src="{{ image.base_file.url }}.thumb.jpg"/>
 </div>
-
-
-
-
 {% endfor %}
 <p class="site_article_footer">{{ gallery.author }} - {{ gallery.pub_date }}</p>
 <hr/>
